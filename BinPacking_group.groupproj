@@ -3,10 +3,13 @@
         <ProjectGuid>{4437A6CF-2D92-4B67-8B2C-9FDC65356E7B}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="BinPacking.dproj">
+        <Projects Include="binpacking.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Test\BinPackingTests.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\demo.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,14 +20,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="BinPacking">
-        <MSBuild Projects="BinPacking.dproj"/>
+    <Target Name="binpacking">
+        <MSBuild Projects="binpacking.dproj"/>
     </Target>
-    <Target Name="BinPacking:Clean">
-        <MSBuild Projects="BinPacking.dproj" Targets="Clean"/>
+    <Target Name="binpacking:Clean">
+        <MSBuild Projects="binpacking.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="BinPacking:Make">
-        <MSBuild Projects="BinPacking.dproj" Targets="Make"/>
+    <Target Name="binpacking:Make">
+        <MSBuild Projects="binpacking.dproj" Targets="Make"/>
     </Target>
     <Target Name="BinPackingTests">
         <MSBuild Projects="Test\BinPackingTests.dproj"/>
@@ -35,14 +38,23 @@
     <Target Name="BinPackingTests:Make">
         <MSBuild Projects="Test\BinPackingTests.dproj" Targets="Make"/>
     </Target>
+    <Target Name="demo">
+        <MSBuild Projects="Demo\demo.dproj"/>
+    </Target>
+    <Target Name="demo:Clean">
+        <MSBuild Projects="Demo\demo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="demo:Make">
+        <MSBuild Projects="Demo\demo.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="BinPacking;BinPackingTests"/>
+        <CallTarget Targets="binpacking;BinPackingTests;demo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="BinPacking:Clean;BinPackingTests:Clean"/>
+        <CallTarget Targets="binpacking:Clean;BinPackingTests:Clean;demo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="BinPacking:Make;BinPackingTests:Make"/>
+        <CallTarget Targets="binpacking:Make;BinPackingTests:Make;demo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
