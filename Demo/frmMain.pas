@@ -113,13 +113,12 @@ begin
     h:=0;
     for I := 0 to rects.Count -1 do begin
       rct := rects[i];
-      w := w + rects[i].Width;
+      w := Max(w,rects[i].Width);
       h := h + rects[i].Height;
     end;
 
     sourceBMP.Width := w;
     sourceBMP.Height:= h;
-
 
     y:=0;
     for I := 0 to rects.Count -1 do begin
@@ -151,7 +150,6 @@ begin
     sourceBMP.Free;
     destBMP.Free;
     colors.Free;
-
   end;
 end;
 
